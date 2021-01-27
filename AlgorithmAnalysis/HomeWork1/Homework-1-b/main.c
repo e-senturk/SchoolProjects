@@ -5,33 +5,33 @@ void merge_sort(int*,int);
 
 int main(int argc, char *argv[]) {
 	/*
-	Deðiþkenler
-		- size: dizi boyutu için
-		- i ve j: iterasyon için
-		- min elemanlar arasýndaki en küçük farký saklamak için
-		- index aranan farký en küçük elemanlardan ilkinin konumunu saklamak için
-	kullanýldý.
+	variables
+		- size: keeps array size
+		- i ve j: iterators
+		- min elemanlar arasï¿½ndaki en kï¿½ï¿½ï¿½k farkï¿½ saklamak iï¿½in
+		- index aranan farkï¿½ en kï¿½ï¿½ï¿½k elemanlardan ilkinin konumunu saklamak iï¿½in
+	kullanï¿½ldï¿½.
 	*/
 	int size,i,j,min,index;
-	// Dizinin boyutu kullanýcýdan alýndý.
+	// Dizinin boyutu kullanï¿½cï¿½dan alï¿½ndï¿½.
 	printf("Dizinin boyutunu giriniz: ");
 	scanf("%d",&size);
-	//2 elemandan daha küçük dizide en yakýn 2 eleman olamayacaðýndan programdan çýkýldý.
+	//2 elemandan daha kï¿½ï¿½ï¿½k dizide en yakï¿½n 2 eleman olamayacaï¿½ï¿½ndan programdan ï¿½ï¿½kï¿½ldï¿½.
 	if(size<2){
 		printf("Dizi boyutu en az 2 olabilir.\n");
 		return 0;
 	}
-	// Alýnan boyuttaki dizi oluþturuldu.
+	// Alï¿½nan boyuttaki dizi oluï¿½turuldu.
 	int A[size];
 	
-	// Dizinin elemanlarý kullanýcýdan input olarak alýndý.
+	// Dizinin elemanlarï¿½ kullanï¿½cï¿½dan input olarak alï¿½ndï¿½.
 	printf("Dizinin elemanlarini giriniz:\n");
 	for(i=0;i<size;i++){
 		scanf("%d",&A[i]);
 	}
-	// Dizinin elemanlarý merge sort ile sýralandý. O(nlogn) karmaþýklýk
+	// Dizinin elemanlarï¿½ merge sort ile sï¿½ralandï¿½. O(nlogn) karmaï¿½ï¿½klï¿½k
 	merge_sort(A,size);
-	// Ardaþýk iki elemanýn farký en küçük olan eleman alýndý. O(n) karmaþýklýk
+	// Ardaï¿½ï¿½k iki elemanï¿½n farkï¿½ en kï¿½ï¿½ï¿½k olan eleman alï¿½ndï¿½. O(n) karmaï¿½ï¿½klï¿½k
 	min = A[1]-A[0];
 	index = 0;
 	for(i=1;i<size-1;i++){
@@ -46,14 +46,14 @@ int main(int argc, char *argv[]) {
 
 void merge(int* A, int* B, int* C,int size){
 	/*
-	Deðiþkenler
-		- i B dizisinin, j C dizisinin, k A dizisinin indisini saklamak için 
-		- B ve C birleþtirilecek dizileri A ise sonucun kaydedileceði diziyi ifade etmek için
-		- size dizi boyutu için kullanýldý.
-	kullanýldý.
+	Deï¿½iï¿½kenler
+		- i B dizisinin, j C dizisinin, k A dizisinin indisini saklamak iï¿½in 
+		- B ve C birleï¿½tirilecek dizileri A ise sonucun kaydedileceï¿½i diziyi ifade etmek iï¿½in
+		- size dizi boyutu iï¿½in kullanï¿½ldï¿½.
+	kullanï¿½ldï¿½.
 	*/
 	int i=0, j=0, k=0;
-	//Dizinin her iki parçasý sýrasý ile A dizisinde birleþtirildi.
+	//Dizinin her iki parï¿½asï¿½ sï¿½rasï¿½ ile A dizisinde birleï¿½tirildi.
 	while(i<size/2 && j<size-size/2){
 		if(B[i]<=C[j]){
 			A[k]=B[i++];
@@ -63,7 +63,7 @@ void merge(int* A, int* B, int* C,int size){
 		}
 		k++;
 	}
-	//Elemaný kalan dizideki elemanlar da diziye eklendi.
+	//Elemanï¿½ kalan dizideki elemanlar da diziye eklendi.
 	while(i<size/2){
 		A[k]=B[i++];
 		k++;
@@ -75,16 +75,16 @@ void merge(int* A, int* B, int* C,int size){
 }
 
 
-// Merge sort algoritmasý
+// Merge sort algoritmasï¿½
 void merge_sort(int* A,int size){
-	//Boyutu 1 oluncaya kadar dizi alt parçalara bölündü.
+	//Boyutu 1 oluncaya kadar dizi alt parï¿½alara bï¿½lï¿½ndï¿½.
 	if(size>1){
 		/*
-		Deðiþkenler
-			- size: dizi boyutu için
-			- i ve j: iterasyon için
-			- B dizinin ilk yarýsýný C ise son yarýsýný saklamak için
-		kullanýldý.
+		Deï¿½iï¿½kenler
+			- size: dizi boyutu iï¿½in
+			- i ve j: iterasyon iï¿½in
+			- B dizinin ilk yarï¿½sï¿½nï¿½ C ise son yarï¿½sï¿½nï¿½ saklamak iï¿½in
+		kullanï¿½ldï¿½.
 		*/
 		int B[size/2],C[size-size/2],i,j;
 		for(i=0;i<size/2;i++){
@@ -93,10 +93,10 @@ void merge_sort(int* A,int size){
 		for(i=0,j=size/2;j<size;i++,j++){
 			C[i]=A[j];
 		}
-		// Dizinin küçük alt parçasý ve büyük alt parçasý rekürsif olarak parçalandý.
+		// Dizinin kï¿½ï¿½ï¿½k alt parï¿½asï¿½ ve bï¿½yï¿½k alt parï¿½asï¿½ rekï¿½rsif olarak parï¿½alandï¿½.
 		merge_sort(B,size/2);
 		merge_sort(C,size-size/2);
-		// Sýralanan iki parça birleþtirildi.
+		// Sï¿½ralanan iki parï¿½a birleï¿½tirildi.
 		merge(A,B,C,size);
 	}
 }
