@@ -1,6 +1,6 @@
 # School Projects
-- Small projects I did at school
-Contents: 
+- Small projects I build at school
+- Contents: 
     - Algorithm Analysis
     - Data Structures
     - 8086 Assembly

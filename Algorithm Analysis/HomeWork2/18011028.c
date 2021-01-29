@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-// Tablo boyutu 1000'e en yakýn asal sayý olarak seçildi
+// Tablo boyutu 1000'e en yakï¿½n asal sayï¿½ olarak seï¿½ildi
 #define TABLE_SIZE 997
 
-// Horner deðeri hesaplanýrken üssü alýnacak sayý
+// Horner deï¿½eri hesaplanï¿½rken ï¿½ssï¿½ alï¿½nacak sayï¿½
 #define R 31
 
-// Struct Yapýlarý
+// Struct Yapï¿½larï¿½
 /* 
-Liste yapýsý document nesnelerini saklamak için oluþturulan struct yapýsý
+Liste yapï¿½sï¿½ document nesnelerini saklamak iï¿½in oluï¿½turulan struct yapï¿½sï¿½
 
 parametreler:	
-	value = Listenin o elemanýnýn içinde saklanacak string deðerini tutar
-	next = Sonraki elemanýn pointer deðerini tutar
+	value = Listenin o elemanï¿½nï¿½n iï¿½inde saklanacak string deï¿½erini tutar
+	next = Sonraki elemanï¿½n pointer deï¿½erini tutar
 */
 struct list{
 	char* value;
@@ -23,37 +23,37 @@ struct list{
 typedef struct list list;
 
 /* 
-Word yapýsý herhangi bir kelimeyi ve kelimenin geçtiði dökümanlarý saklamak için oluþturulan struct yapýsý
+Word yapï¿½sï¿½ herhangi bir kelimeyi ve kelimenin geï¿½tiï¿½i dï¿½kï¿½manlarï¿½ saklamak iï¿½in oluï¿½turulan struct yapï¿½sï¿½
 
 parametreler:
-	string = Kelimenin içeriðini saklamak için oluþturulan yapý
-	documents = Kelimenin geçtiði dökümanlarýn listesini saklayan linkli liste
+	string = Kelimenin iï¿½eriï¿½ini saklamak iï¿½in oluï¿½turulan yapï¿½
+	documents = Kelimenin geï¿½tiï¿½i dï¿½kï¿½manlarï¿½n listesini saklayan linkli liste
 */
 struct {
 	char* string;
 	list* documents;
 }typedef word;
 
-// Fonksiyon Headerlarý
+// Fonksiyon Headerlarï¿½
 
-// String Fonksiyonlarý 
+// String Fonksiyonlarï¿½ 
 int order(char character);
 char lowercase(char character);
 bool compare_char(char character1,char character2);
 bool compare_string(char* string1, char* string2);
 
-// Liste Fonksiyonlarý
+// Liste Fonksiyonlarï¿½
 list* create_list(char* value);
 bool find_list(list* head, char* value);
 list* add_front_list(list* head, char* value);
 
-// Kelime Fonksiyonlarý
+// Kelime Fonksiyonlarï¿½
 word create_word(char* string,char* document);
 word add_document(word *element,char* document);
 bool is_in_document(word element,char*document);
 void print_word(word element);
 
-// Hash Fonksiyonlarý
+// Hash Fonksiyonlarï¿½
 word* create_new_hash();
 int horner(char* text);
 int double_hashing(char* string,int i);
@@ -61,7 +61,7 @@ int search_hash_table(char* string, word* hash_table,int* step);
 void insert_hash_table(char* string, char* document, word* hash_table,int* load_factor);
 void find_word(char* string,word* hash_table);
 
-// Input/Output Fonksiyonlarý
+// Input/Output Fonksiyonlarï¿½
 void print_info();
 bool write_database(word* hash_table,int load_factor);
 word* read_database(int* load_factor);
@@ -70,13 +70,13 @@ void deallocate();
 
 // Ana Fonksiyon
 /* 
-Kullanýcýdan alýnan inputlara göre dosyalarý hash tablosuna ekleyip dosyalar üzerinde arama yapan fonksiyon
+Kullanï¿½cï¿½dan alï¿½nan inputlara gï¿½re dosyalarï¿½ hash tablosuna ekleyip dosyalar ï¿½zerinde arama yapan fonksiyon
 
 parametreler:
 	hash_table = hash tablosunu tutan dizi
-	load_factor = tablodaki dolu eleman sayýsýný tutan deðiþken
-	select = kullanýcýdan input alýrken kullanýlan karakter
-	file_name = okunacak dosya adýný tutan string
+	load_factor = tablodaki dolu eleman sayï¿½sï¿½nï¿½ tutan deï¿½iï¿½ken
+	select = kullanï¿½cï¿½dan input alï¿½rken kullanï¿½lan karakter
+	file_name = okunacak dosya adï¿½nï¿½ tutan string
 	string = aranacak kelimeyi tutan string
 */
 int main(int argc, char *argv[]) {
@@ -118,15 +118,15 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-// Yardýmcý fonksiyonlar
+// Yardï¿½mcï¿½ fonksiyonlar
 
 /* 
-Verilen karakterin alfabetik olarak sýrasýný 0 dan baþlayacak þekilde hesaplayan fonksiyon
-Eðer karakter alfabede yoksa ascii tablosundaki deðeri kullanýldý
+Verilen karakterin alfabetik olarak sï¿½rasï¿½nï¿½ 0 dan baï¿½layacak ï¿½ekilde hesaplayan fonksiyon
+Eï¿½er karakter alfabede yoksa ascii tablosundaki deï¿½eri kullanï¿½ldï¿½
 
 parametreler:
 	c = verilen karakter
-	return = karakterin alfabetik sýrasýnýn integer deðeri
+	return = karakterin alfabetik sï¿½rasï¿½nï¿½n integer deï¿½eri
 */
 int order(char c){
 	if(c>='A' && c<='Z')
@@ -152,25 +152,25 @@ char lowercase(char c){
 }
 
 /* 
-Case sensitive kuralý gözetmeden 2 karakteri karþýlaþtýran fonksiyon
+Case sensitive kuralï¿½ gï¿½zetmeden 2 karakteri karï¿½ï¿½laï¿½tï¿½ran fonksiyon
 
 parametreler:
 	c1 = 1. karakter
 	c2 = 2. karakter
-	return = karakterlerin eþit olup olmadýðýný döndüren boolean deðeri
+	return = karakterlerin eï¿½it olup olmadï¿½ï¿½ï¿½nï¿½ dï¿½ndï¿½ren boolean deï¿½eri
 */
 bool compare_char(char c1,char c2){
 	return lowercase(c1) == lowercase(c2);
 }
 
 /* 
-Case sensitive kuralý gözetmeden 2 stringi karþýlaþtýran fonksiyon
+Case sensitive kuralï¿½ gï¿½zetmeden 2 stringi karï¿½ï¿½laï¿½tï¿½ran fonksiyon
 
 parametreler:
 	s1 = 1. string
 	s2 = 2. string
-	i = iterasyon için kullanýldý
-	return = stringlerin eþit olup olmadýðýný döndüren boolean deðeri
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	return = stringlerin eï¿½it olup olmadï¿½ï¿½ï¿½nï¿½ dï¿½ndï¿½ren boolean deï¿½eri
 */
 bool compare_string(char* s1, char* s2){
 	int i = 0;
@@ -183,17 +183,17 @@ bool compare_string(char* s1, char* s2){
 }
 
 /* 
-Listenin head nodunu verilen deðere göre oluþturan fonksiyon
+Listenin head nodunu verilen deï¿½ere gï¿½re oluï¿½turan fonksiyon
 
-açýklama: Head noduna memory allocation ile yer açýldý
-	Value için memory allocation ile eklenen kelime kadar yer açýldý
-	Head deðerinin içine deðer olarak value deðeri kaydedildi
-	Head nodunun next nodu olarak NULL atandý
-	Sonuç olarak oluþturulan head deðerine geri dönüþ yapýldý
+aï¿½ï¿½klama: Head noduna memory allocation ile yer aï¿½ï¿½ldï¿½
+	Value iï¿½in memory allocation ile eklenen kelime kadar yer aï¿½ï¿½ldï¿½
+	Head deï¿½erinin iï¿½ine deï¿½er olarak value deï¿½eri kaydedildi
+	Head nodunun next nodu olarak NULL atandï¿½
+	Sonuï¿½ olarak oluï¿½turulan head deï¿½erine geri dï¿½nï¿½ï¿½ yapï¿½ldï¿½
 
 parametreler:
 	value = listenin head noduna eklenecek kelime
-	return = oluþturlan yeni listenin head nodu
+	return = oluï¿½turlan yeni listenin head nodu
 */
 list* create_list(char* value){
 	list* head = (list*) malloc(sizeof(list));
@@ -204,16 +204,16 @@ list* create_list(char* value){
 }
 
 /* 
-Verilen liste içinde kelime arayan fonksiyon
+Verilen liste iï¿½inde kelime arayan fonksiyon
 
-açýklama: Verilen liste içerisindeki tüm nodlar son noda kadar itere edildi
-	Eðer son noda ulaþýlmadan kelime bulunursa true, son noda ulaþýlýrsa 
-	false döndürüldü
+aï¿½ï¿½klama: Verilen liste iï¿½erisindeki tï¿½m nodlar son noda kadar itere edildi
+	Eï¿½er son noda ulaï¿½ï¿½lmadan kelime bulunursa true, son noda ulaï¿½ï¿½lï¿½rsa 
+	false dï¿½ndï¿½rï¿½ldï¿½
 
 parametreler:
 	head = listenin head nodu
 	value = aranacak kelime
-	return = kelimenin bulup bulunmadýðýnýn bilgisini içeren boolean deðeri
+	return = kelimenin bulup bulunmadï¿½ï¿½ï¿½nï¿½n bilgisini iï¿½eren boolean deï¿½eri
 */
 bool find_list(list* head, char* value){
 	while(head != NULL && strcmp(head->value,value)!=0){
@@ -226,19 +226,19 @@ bool find_list(list* head, char* value){
 }
 
 /* 
-listenin baþýna eleman ekleyen fonksiyon
+listenin baï¿½ï¿½na eleman ekleyen fonksiyon
 
-açýklama: Listenin içinde find_list fonksiyonu kullanýlarak döküman adý arandý
-	Eðer döküman yoksa yeni bir head nodu oluþturuldu ve listenin baþýna eklendi
-	Eðer ilk head node boþsa yeni oluþturlan node head olarak atandý eski head node silindi
-	Eðer ilk head node doluysa yeni head nodun sonrasýna eski head nodu atandý
-	Yeni head nodu döndürüldü
+aï¿½ï¿½klama: Listenin iï¿½inde find_list fonksiyonu kullanï¿½larak dï¿½kï¿½man adï¿½ arandï¿½
+	Eï¿½er dï¿½kï¿½man yoksa yeni bir head nodu oluï¿½turuldu ve listenin baï¿½ï¿½na eklendi
+	Eï¿½er ilk head node boï¿½sa yeni oluï¿½turlan node head olarak atandï¿½ eski head node silindi
+	Eï¿½er ilk head node doluysa yeni head nodun sonrasï¿½na eski head nodu atandï¿½
+	Yeni head nodu dï¿½ndï¿½rï¿½ldï¿½
 
 parametreler:
 	head = listenin head nodu
 	new_head = listenin yeni head_nodu;
 	value = aranacak kelime
-	return = kelimenin bulup bulunmadýðýnýn bilgisini içeren boolean deðeri
+	return = kelimenin bulup bulunmadï¿½ï¿½ï¿½nï¿½n bilgisini iï¿½eren boolean deï¿½eri
 */
 list* add_front_list(list* head, char* value){
 	if(find_list(head,value)){
@@ -255,19 +255,19 @@ list* add_front_list(list* head, char* value){
 }
 
 /* 
-Verilen kelime ve döküman için yeni kelime oluþturan fonksiyon
+Verilen kelime ve dï¿½kï¿½man iï¿½in yeni kelime oluï¿½turan fonksiyon
 
-açýklama: Word tipinde bir struct oluþturuldu
-	Memory allocation ile bu structa yer açýldý
-	Yeni kelime word struct yapýsýna kopyalandý
-	Word yapýsýndaki listeye döküman yeni liste oluþtularak eklendi
-	Sonuç olarak oluþturulan struct yapýsýna dönüldü
+aï¿½ï¿½klama: Word tipinde bir struct oluï¿½turuldu
+	Memory allocation ile bu structa yer aï¿½ï¿½ldï¿½
+	Yeni kelime word struct yapï¿½sï¿½na kopyalandï¿½
+	Word yapï¿½sï¿½ndaki listeye dï¿½kï¿½man yeni liste oluï¿½tularak eklendi
+	Sonuï¿½ olarak oluï¿½turulan struct yapï¿½sï¿½na dï¿½nï¿½ldï¿½
 
 parametreler:
 	string = eklenecek kelime
-	document = kelimenin bulunduðu dökümanýn adý
-	new_word = kelime ve dökümanýn içeriðinin bulunduðu struct yapýsý
-	return = yeni oluþturulan struct yapýsý
+	document = kelimenin bulunduï¿½u dï¿½kï¿½manï¿½n adï¿½
+	new_word = kelime ve dï¿½kï¿½manï¿½n iï¿½eriï¿½inin bulunduï¿½u struct yapï¿½sï¿½
+	return = yeni oluï¿½turulan struct yapï¿½sï¿½
 */
 word create_word(char* string,char* document){
 	word new_word;
@@ -278,19 +278,19 @@ word create_word(char* string,char* document){
 }
 
 /* 
-Verilen kelime ve döküman için yeni kelime oluþturan fonksiyon
+Verilen kelime ve dï¿½kï¿½man iï¿½in yeni kelime oluï¿½turan fonksiyon
 
-açýklama: Word tipinde bir struct oluþturuldu
-	Memory allocation ile bu structa yer açýldý
-	Yeni kelime word struct yapýsýna kopyalandý
-	Word yapýsýndaki listeye döküman yeni liste oluþtularak eklendi
-	Sonuç olarak oluþturulan struct yapýsýna dönüldü
+aï¿½ï¿½klama: Word tipinde bir struct oluï¿½turuldu
+	Memory allocation ile bu structa yer aï¿½ï¿½ldï¿½
+	Yeni kelime word struct yapï¿½sï¿½na kopyalandï¿½
+	Word yapï¿½sï¿½ndaki listeye dï¿½kï¿½man yeni liste oluï¿½tularak eklendi
+	Sonuï¿½ olarak oluï¿½turulan struct yapï¿½sï¿½na dï¿½nï¿½ldï¿½
 
 parametreler:
 	string = eklenecek kelime
-	document = kelimenin bulunduðu dökümanýn adý
-	new_word = kelime ve dökümanýn içeriðinin bulunduðu struct yapýsý
-	return = yeni oluþturulan struct yapýsý
+	document = kelimenin bulunduï¿½u dï¿½kï¿½manï¿½n adï¿½
+	new_word = kelime ve dï¿½kï¿½manï¿½n iï¿½eriï¿½inin bulunduï¿½u struct yapï¿½sï¿½
+	return = yeni oluï¿½turulan struct yapï¿½sï¿½
 */
 word add_document(word *element,char* document){
 	element->documents = add_front_list(element->documents,document);
@@ -298,33 +298,33 @@ word add_document(word *element,char* document){
 }
 
 /* 
-Kelimenin içinde herhangi bir dökümanýn olup olmadýðýný arayan yardýmcý fonksiyon
+Kelimenin iï¿½inde herhangi bir dï¿½kï¿½manï¿½n olup olmadï¿½ï¿½ï¿½nï¿½ arayan yardï¿½mcï¿½ fonksiyon
 
-açýklama: Verilen bir word structý içindeki döküman listesinde verilen dökümanýn
-	olup olmaduðýný find_list fonksiyonunu kullanarak arandý
+aï¿½ï¿½klama: Verilen bir word structï¿½ iï¿½indeki dï¿½kï¿½man listesinde verilen dï¿½kï¿½manï¿½n
+	olup olmaduï¿½ï¿½nï¿½ find_list fonksiyonunu kullanarak arandï¿½
 
 parametreler:
-	word = arama yapýlacak kelime structu
-	document = aranan döküman
-	return = dökümanýn o word structunda olup olmadýðýný gösteren boolean deðiþkeni
+	word = arama yapï¿½lacak kelime structu
+	document = aranan dï¿½kï¿½man
+	return = dï¿½kï¿½manï¿½n o word structunda olup olmadï¿½ï¿½ï¿½nï¿½ gï¿½steren boolean deï¿½iï¿½keni
 */
 bool is_in_document(word element,char*document){
 	return find_list(element.documents,document);
 }
 
 /* 
-Tablo boyutuna göre hash tablosunu boþ elemanlarla oluþturan fonksiyon
+Tablo boyutuna gï¿½re hash tablosunu boï¿½ elemanlarla oluï¿½turan fonksiyon
 
-açýklama: Define ile belirlenen tablo boyutunda word structundan oluþan bir dizi memory allocation ile oluþturuldu
-	Her eleman tek tek memory allocation ile oluþturulmasý gerektiðinden create_word fonksiyonu çaðýrýldý
-	Çaðýrýlan fonksiyona kelime "*" olarak döküman adý ise boþ olarak atandý
-	write_database fonksiyonu ile database dosyasý güncellendi
-	Dönüþ deðeri olarak oluþturulan tabloya dönüldü  
+aï¿½ï¿½klama: Define ile belirlenen tablo boyutunda word structundan oluï¿½an bir dizi memory allocation ile oluï¿½turuldu
+	Her eleman tek tek memory allocation ile oluï¿½turulmasï¿½ gerektiï¿½inden create_word fonksiyonu ï¿½aï¿½ï¿½rï¿½ldï¿½
+	ï¿½aï¿½ï¿½rï¿½lan fonksiyona kelime "*" olarak dï¿½kï¿½man adï¿½ ise boï¿½ olarak atandï¿½
+	write_database fonksiyonu ile database dosyasï¿½ gï¿½ncellendi
+	Dï¿½nï¿½ï¿½ deï¿½eri olarak oluï¿½turulan tabloya dï¿½nï¿½ldï¿½  
 
 parametreler:
-	hash_table = yeni oluþturulan hash tablosu
-	i = iterasyon için kullanýldý
-	return = yeni oluþturulan hash tablosu
+	hash_table = yeni oluï¿½turulan hash tablosu
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	return = yeni oluï¿½turulan hash tablosu
 */
 word* create_new_hash(){
 	word* hash_table = (word*)malloc(sizeof(word)*TABLE_SIZE);
@@ -337,18 +337,18 @@ word* create_new_hash(){
 }
 
 /* 
-Verilen bir texti horner metodu ile integera çeviren fonksiyon
+Verilen bir texti horner metodu ile integera ï¿½eviren fonksiyon
 
-açýklama: Verilen bir text bir for loopu ile baþtan sona doðru horner metodu
-	kullanýlarak elde edilen toplam her adýmda R ile çarpýlarak karakterin farklý katsayýda toplama etki etmesi
-	saðlandý bulunan toplam negatif çýkarsa (toplamýn integer boyutunu geçme ihtimali yüzünden) sonuç -1 ile çarpýldý.
+aï¿½ï¿½klama: Verilen bir text bir for loopu ile baï¿½tan sona doï¿½ru horner metodu
+	kullanï¿½larak elde edilen toplam her adï¿½mda R ile ï¿½arpï¿½larak karakterin farklï¿½ katsayï¿½da toplama etki etmesi
+	saï¿½landï¿½ bulunan toplam negatif ï¿½ï¿½karsa (toplamï¿½n integer boyutunu geï¿½me ihtimali yï¿½zï¿½nden) sonuï¿½ -1 ile ï¿½arpï¿½ldï¿½.
 
 parametreler:
-	text = verilen text deðeri 
-	i = iterasyon için kullanýldý
-	sum = horner için hesaplanan toplamý tutan deðiþken
-	size = verilen deðiþkenin
-	return = bulunan toplam sonucunun pozitif deðeri bulunan integer deðeri 
+	text = verilen text deï¿½eri 
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	sum = horner iï¿½in hesaplanan toplamï¿½ tutan deï¿½iï¿½ken
+	size = verilen deï¿½iï¿½kenin
+	return = bulunan toplam sonucunun pozitif deï¿½eri bulunan integer deï¿½eri 
 */
 int horner(char* text){
 	int i;
@@ -364,21 +364,21 @@ int horner(char* text){
 }
 
 /* 
-Verilen bir stringi verilen bir integer deðeri ile birlikte double hashing iþleminden geçiren fonksiyon
+Verilen bir stringi verilen bir integer deï¿½eri ile birlikte double hashing iï¿½leminden geï¿½iren fonksiyon
 
-açýklama: String horner metoduna göre bir integer sayýya dönüþtürüldü
-	Tablo boyutuna göre h1 ve h2 fonksiyonlarý double hashing için oluþturuldu
-	h2 deðeri i deðeri ile çarpýlýp h1 deðeri ile toplandý ve bulunan sonucun tablo boyutuna göre modu alýndý
-	Kullanýcýya bu sonuç deðeri döndürüldü
+aï¿½ï¿½klama: String horner metoduna gï¿½re bir integer sayï¿½ya dï¿½nï¿½ï¿½tï¿½rï¿½ldï¿½
+	Tablo boyutuna gï¿½re h1 ve h2 fonksiyonlarï¿½ double hashing iï¿½in oluï¿½turuldu
+	h2 deï¿½eri i deï¿½eri ile ï¿½arpï¿½lï¿½p h1 deï¿½eri ile toplandï¿½ ve bulunan sonucun tablo boyutuna gï¿½re modu alï¿½ndï¿½
+	Kullanï¿½cï¿½ya bu sonuï¿½ deï¿½eri dï¿½ndï¿½rï¿½ldï¿½
 	
 parametreler:
-	string = verilen string deðeri 
-	i = h2 deðeri katsayýsý
-	horn = horner metoduyla hesaplanan integer sayý
-	h1 = h1 fonksiyonunun sonucunu tutan deðiþken
-	h2 = h2 fonksiyonunun sonucunu tutan deðiþken
-	hash = hesaplanan hash deðerini tutan deðiþken 
-	return = hesaplanan hash deðeri
+	string = verilen string deï¿½eri 
+	i = h2 deï¿½eri katsayï¿½sï¿½
+	horn = horner metoduyla hesaplanan integer sayï¿½
+	h1 = h1 fonksiyonunun sonucunu tutan deï¿½iï¿½ken
+	h2 = h2 fonksiyonunun sonucunu tutan deï¿½iï¿½ken
+	hash = hesaplanan hash deï¿½erini tutan deï¿½iï¿½ken 
+	return = hesaplanan hash deï¿½eri
 */
 int double_hashing(char* string,int i){
 	int hash,h1,h2,horn;
@@ -390,23 +390,23 @@ int double_hashing(char* string,int i){
 }
 
 /* 
-Hash tablosu içinde verilen bir stringin geçip geçmediðini bulan geçiyorsa o indisi geçmiyorsa 
-bulunan ilk boþ indisi döndüren fonksiyon
+Hash tablosu iï¿½inde verilen bir stringin geï¿½ip geï¿½mediï¿½ini bulan geï¿½iyorsa o indisi geï¿½miyorsa 
+bulunan ilk boï¿½ indisi dï¿½ndï¿½ren fonksiyon
 
-açýklama: Aranýlan stringin double_hashing fonksiyonu ile hash deðeri i=0 için hesaplandý
-	i deðiþkeni step deðiþkeninde daha sonra kaç adýmda iþlem yapýldýðýný bulmak için saklandý
-	Eðer bulduðumuz hash deðerindeki string aradýðýmýz stringle ayný ise o index deðeri döndürüldü
-	Eðer eþit deðilse boþ hash elemaný buluncaya kadar i deðeri arttýrýlarak sonraki hash deðerlerine bakýldý
-	Eðer eleman herhangi bir hash deðerinde bulunursa o indexe döndürüldü
-	Eðer boþ eleman bulunursa da yine o indexe döndürülüdü bu sayede sonraki elemaný yerleþtirebileceðimiz indexi de bulmuþ olduk
+aï¿½ï¿½klama: Aranï¿½lan stringin double_hashing fonksiyonu ile hash deï¿½eri i=0 iï¿½in hesaplandï¿½
+	i deï¿½iï¿½keni step deï¿½iï¿½keninde daha sonra kaï¿½ adï¿½mda iï¿½lem yapï¿½ldï¿½ï¿½ï¿½nï¿½ bulmak iï¿½in saklandï¿½
+	Eï¿½er bulduï¿½umuz hash deï¿½erindeki string aradï¿½ï¿½ï¿½mï¿½z stringle aynï¿½ ise o index deï¿½eri dï¿½ndï¿½rï¿½ldï¿½
+	Eï¿½er eï¿½it deï¿½ilse boï¿½ hash elemanï¿½ buluncaya kadar i deï¿½eri arttï¿½rï¿½larak sonraki hash deï¿½erlerine bakï¿½ldï¿½
+	Eï¿½er eleman herhangi bir hash deï¿½erinde bulunursa o indexe dï¿½ndï¿½rï¿½ldï¿½
+	Eï¿½er boï¿½ eleman bulunursa da yine o indexe dï¿½ndï¿½rï¿½lï¿½dï¿½ bu sayede sonraki elemanï¿½ yerleï¿½tirebileceï¿½imiz indexi de bulmuï¿½ olduk
 		
 parametreler:
-	string = verilen string deðeri 
+	string = verilen string deï¿½eri 
 	hash_table = hash tablosu
-	step = iþlem adým sayýsý
-	index = hesaplanan hash deðerini tutan deðiþken
-	i = iterasyon için kullanýldý
-	return = hesaplanan index deðeri
+	step = iï¿½lem adï¿½m sayï¿½sï¿½
+	index = hesaplanan hash deï¿½erini tutan deï¿½iï¿½ken
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	return = hesaplanan index deï¿½eri
 */
 int search_hash_table(char* string, word* hash_table,int* step){
 	int index = double_hashing(string,0); 
@@ -428,23 +428,23 @@ int search_hash_table(char* string, word* hash_table,int* step){
 }
 
 /* 
-Hash tablosuna verilen stringi yerleþtiren fonksiyon
+Hash tablosuna verilen stringi yerleï¿½tiren fonksiyon
 
-açýklama: Verilen kelimenin bulunduðu veya koyulmasý gereken hash deðeri search_hash_table fonksiyonu ile hesaplandý
-	tablo dolu ise eleman eklenemedi ve eklenemeyen kelime kullanýcýya yazdýrýldý
-	tablo %80 dolu ise kullanýcýya tablonun dolduðuna dair uyarý verildi
-	eðer bulunan index boþ ise yeni kelime ve döküman adý o indexe yerleþtirildi
-	her yeni kelime eklendiðinde doluluk oraný kullanýcýya yazdýrýldý
-	eðer index dolu ise sadece döküman adý o indexe eklendi
+aï¿½ï¿½klama: Verilen kelimenin bulunduï¿½u veya koyulmasï¿½ gereken hash deï¿½eri search_hash_table fonksiyonu ile hesaplandï¿½
+	tablo dolu ise eleman eklenemedi ve eklenemeyen kelime kullanï¿½cï¿½ya yazdï¿½rï¿½ldï¿½
+	tablo %80 dolu ise kullanï¿½cï¿½ya tablonun dolduï¿½una dair uyarï¿½ verildi
+	eï¿½er bulunan index boï¿½ ise yeni kelime ve dï¿½kï¿½man adï¿½ o indexe yerleï¿½tirildi
+	her yeni kelime eklendiï¿½inde doluluk oranï¿½ kullanï¿½cï¿½ya yazdï¿½rï¿½ldï¿½
+	eï¿½er index dolu ise sadece dï¿½kï¿½man adï¿½ o indexe eklendi
 	
 parametreler:
-	string = verilen string deðeri
-	document = döküman adý 
+	string = verilen string deï¿½eri
+	document = dï¿½kï¿½man adï¿½ 
 	hash_table = hash tablosu
-	load_factor = tablodaki dolu eleman sayýsý
-	step = iþlem adým sayýsý
-	index = hesaplanan hash deðerini tutan deðiþken
-	ratio = tablonun doluluk oranýný saklayan deðiþken
+	load_factor = tablodaki dolu eleman sayï¿½sï¿½
+	step = iï¿½lem adï¿½m sayï¿½sï¿½
+	index = hesaplanan hash deï¿½erini tutan deï¿½iï¿½ken
+	ratio = tablonun doluluk oranï¿½nï¿½ saklayan deï¿½iï¿½ken
 */
 void insert_hash_table(char* string, char* document, word* hash_table,int* load_factor){
 	int step = 0;
@@ -470,19 +470,19 @@ void insert_hash_table(char* string, char* document, word* hash_table,int* load_
 }
 
 /* 
-Aranan kelimeyi hash tablosunda bulup hangi dosyalarda olduðunu yazdýran fonksiyon
+Aranan kelimeyi hash tablosunda bulup hangi dosyalarda olduï¿½unu yazdï¿½ran fonksiyon
 
-açýklama: Verilen kelimenin hash deðeri search_hash_table fonksiyonu ile hesaplandý
-	Step deðeri ile bu iþlemin kaç adýmda hesaplandýðý yazdýrýldý
-	Eðer döndürülen indexteki kelime hatalýysa kelime bulunamadýðýna dair kullanýcýya çýktý verildi
-	Eðer indexde eleman varsa kelimenin bulunduðuna dair kullanýcýya çýktý verildi
-	Ýþlem adým sayýsý kullanýcýya verildi
+aï¿½ï¿½klama: Verilen kelimenin hash deï¿½eri search_hash_table fonksiyonu ile hesaplandï¿½
+	Step deï¿½eri ile bu iï¿½lemin kaï¿½ adï¿½mda hesaplandï¿½ï¿½ï¿½ yazdï¿½rï¿½ldï¿½
+	Eï¿½er dï¿½ndï¿½rï¿½len indexteki kelime hatalï¿½ysa kelime bulunamadï¿½ï¿½ï¿½na dair kullanï¿½cï¿½ya ï¿½ï¿½ktï¿½ verildi
+	Eï¿½er indexde eleman varsa kelimenin bulunduï¿½una dair kullanï¿½cï¿½ya ï¿½ï¿½ktï¿½ verildi
+	ï¿½ï¿½lem adï¿½m sayï¿½sï¿½ kullanï¿½cï¿½ya verildi
 		
 parametreler:
-	string = verilen string deðeri
+	string = verilen string deï¿½eri
 	hash_table = hash tablosu
-	step = iþlem adým sayýsýný tutan deðiþken
-	index = hesaplanan hash deðerini tutan deðiþken
+	step = iï¿½lem adï¿½m sayï¿½sï¿½nï¿½ tutan deï¿½iï¿½ken
+	index = hesaplanan hash deï¿½erini tutan deï¿½iï¿½ken
 */
 
 void find_word(char* string,word* hash_table){
@@ -502,7 +502,7 @@ void find_word(char* string,word* hash_table){
 }
 
 /* 
-Kullanýcýya input hakkýnda bilgi yazdýran fonksiyon
+Kullanï¿½cï¿½ya input hakkï¿½nda bilgi yazdï¿½ran fonksiyon
 */
 void print_info(){
 	printf("\nLutfen Yapilacak Islemi Secin:\n");
@@ -515,23 +515,23 @@ void print_info(){
 }
 
 /* 
-Veritabanýndan hash tablosunu ve load faktörü yazan fonksiyon
+Veritabanï¿½ndan hash tablosunu ve load faktï¿½rï¿½ yazan fonksiyon
 
-açýklama: load_factor yazdýrýlmak üzere string deðerine çevrildi
-	Database dosyasýna veritabaný dosyasý yazma modunda açýldý açýlamazsa false döndürüldü
-	Dosya düzeni açýsýndan verilerin neye ait olduðu da dosyaya yazdýrýldý
-	Ýlk baþta load faktör sonrasýnda ise hash tablosundaki elemanlar sýrasý ile dosyaya yazdýrýldý
-	Hash tablosunda her satýrý ayýrt etmek için satýr baþýna # deðeri konuldu
-	Satýrýn ilk elemaný olarak kelime deðeri sonraki elemanlarý olarak dosya adlarý sýrasý ile yazdýrýldý
-	Dosya yazma sonrasýnda kapatýldý
+aï¿½ï¿½klama: load_factor yazdï¿½rï¿½lmak ï¿½zere string deï¿½erine ï¿½evrildi
+	Database dosyasï¿½na veritabanï¿½ dosyasï¿½ yazma modunda aï¿½ï¿½ldï¿½ aï¿½ï¿½lamazsa false dï¿½ndï¿½rï¿½ldï¿½
+	Dosya dï¿½zeni aï¿½ï¿½sï¿½ndan verilerin neye ait olduï¿½u da dosyaya yazdï¿½rï¿½ldï¿½
+	ï¿½lk baï¿½ta load faktï¿½r sonrasï¿½nda ise hash tablosundaki elemanlar sï¿½rasï¿½ ile dosyaya yazdï¿½rï¿½ldï¿½
+	Hash tablosunda her satï¿½rï¿½ ayï¿½rt etmek iï¿½in satï¿½r baï¿½ï¿½na # deï¿½eri konuldu
+	Satï¿½rï¿½n ilk elemanï¿½ olarak kelime deï¿½eri sonraki elemanlarï¿½ olarak dosya adlarï¿½ sï¿½rasï¿½ ile yazdï¿½rï¿½ldï¿½
+	Dosya yazma sonrasï¿½nda kapatï¿½ldï¿½
 		
 parametreler:
-	hash_table = yazdýrýlacak hash tablosu
-	load_factor = tablodaki dolu eleman sayýsý
-	i = iterasyon için kullanýldý
-	database = yazdýrýlacak veritabaný dosyasýný saklayan pointer
-	load_str = load faktörün string deðeri
-	return = yazým iþleminin baþarýlý veya baþarýsýz olduðunu ifade eden boolean deðeri
+	hash_table = yazdï¿½rï¿½lacak hash tablosu
+	load_factor = tablodaki dolu eleman sayï¿½sï¿½
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	database = yazdï¿½rï¿½lacak veritabanï¿½ dosyasï¿½nï¿½ saklayan pointer
+	load_str = load faktï¿½rï¿½n string deï¿½eri
+	return = yazï¿½m iï¿½leminin baï¿½arï¿½lï¿½ veya baï¿½arï¿½sï¿½z olduï¿½unu ifade eden boolean deï¿½eri
 */
 bool write_database(word* hash_table,int load_factor){
 	int i;
@@ -563,28 +563,28 @@ bool write_database(word* hash_table,int load_factor){
 
 
 /* 
-Veritabanýndan hash tablosunu ve load faktörü okuyan fonksiyon
+Veritabanï¿½ndan hash tablosunu ve load faktï¿½rï¿½ okuyan fonksiyon
 
-açýklama: Hash tablosu için memory alaný oluþturuldu
-	Veritabaný dosyasý okundu eðer bulunamazsa create_new_hash fonksiyonu ile boþ veri tabaný dosyasý oluþturuldu
-	Veri açýsýndan bilgilendirici satýrlar görmezden gelindi
-	Load factor string olarak okunup atoi fonksiyonu ile integera çevrildi
-	Sýrasý ile her satýr baþýndaki # deðerine göre ayrýþtýrýldý
-	Satýrýn ilk elemaný kelime olarak diðer elemanlarý ise döküman olarak okundu ve ilgili fonksiyonlarla
-	word structu oluþturuldu
-	Oluþturulan structlar hash tablosuna sýrasý ile eklendi
-	Dosya okuma sonrasýnda kapatýldý
+aï¿½ï¿½klama: Hash tablosu iï¿½in memory alanï¿½ oluï¿½turuldu
+	Veritabanï¿½ dosyasï¿½ okundu eï¿½er bulunamazsa create_new_hash fonksiyonu ile boï¿½ veri tabanï¿½ dosyasï¿½ oluï¿½turuldu
+	Veri aï¿½ï¿½sï¿½ndan bilgilendirici satï¿½rlar gï¿½rmezden gelindi
+	Load factor string olarak okunup atoi fonksiyonu ile integera ï¿½evrildi
+	Sï¿½rasï¿½ ile her satï¿½r baï¿½ï¿½ndaki # deï¿½erine gï¿½re ayrï¿½ï¿½tï¿½rï¿½ldï¿½
+	Satï¿½rï¿½n ilk elemanï¿½ kelime olarak diï¿½er elemanlarï¿½ ise dï¿½kï¿½man olarak okundu ve ilgili fonksiyonlarla
+	word structu oluï¿½turuldu
+	Oluï¿½turulan structlar hash tablosuna sï¿½rasï¿½ ile eklendi
+	Dosya okuma sonrasï¿½nda kapatï¿½ldï¿½
 
 		
 parametreler:
-	load_factor = tablodaki dolu eleman sayýsý
-	i = iterasyon için kullanýldý
-	hash_table = oluþtutulacak hash tablosu
-	database = okunacak veritabaný dosyasýný saklayan pointer
-	load_str = load faktörün string deðeri
-	temp,word = geçici olarak input deðerlerini saklayan bufferlar
+	load_factor = tablodaki dolu eleman sayï¿½sï¿½
+	i = iterasyon iï¿½in kullanï¿½ldï¿½
+	hash_table = oluï¿½tutulacak hash tablosu
+	database = okunacak veritabanï¿½ dosyasï¿½nï¿½ saklayan pointer
+	load_str = load faktï¿½rï¿½n string deï¿½eri
+	temp,word = geï¿½ici olarak input deï¿½erlerini saklayan bufferlar
 	string = okunan kelime
-	return = okuma sonucu oluþan hash tablosu
+	return = okuma sonucu oluï¿½an hash tablosu
 */
 word* read_database(int* load_factor){
 	int i;
@@ -617,21 +617,21 @@ word* read_database(int* load_factor){
 }
 
 /* 
-Herhangi bir dosyayý okuyup içindeki kelimeleri hash tablosuna kaydeden fonksiyon
+Herhangi bir dosyayï¿½ okuyup iï¿½indeki kelimeleri hash tablosuna kaydeden fonksiyon
 
-açýklama: Verilen kelimenin hash deðeri search_hash_table fonksiyonu ile hesaplandý
-	Step deðeri ile bu iþlemin kaç adýmda hesaplandýðý yazdýrýldý
-	Eðer boþ index bulduysak kelime bulunamadýðýna dair kullanýcýya çýktý verildi
-	Eðer indexde eleman varsa kelimenin bulunduðuna dair kullanýcýya çýktý verildi
-	Ýþlem adým sayýsý kullanýcýya verildi
+aï¿½ï¿½klama: Verilen kelimenin hash deï¿½eri search_hash_table fonksiyonu ile hesaplandï¿½
+	Step deï¿½eri ile bu iï¿½lemin kaï¿½ adï¿½mda hesaplandï¿½ï¿½ï¿½ yazdï¿½rï¿½ldï¿½
+	Eï¿½er boï¿½ index bulduysak kelime bulunamadï¿½ï¿½ï¿½na dair kullanï¿½cï¿½ya ï¿½ï¿½ktï¿½ verildi
+	Eï¿½er indexde eleman varsa kelimenin bulunduï¿½una dair kullanï¿½cï¿½ya ï¿½ï¿½ktï¿½ verildi
+	ï¿½ï¿½lem adï¿½m sayï¿½sï¿½ kullanï¿½cï¿½ya verildi
 		
 parametreler:
-	file_name = okunacak dosyanýn adý
-	hash_table = oluþtutulacak hash tablosu
-	load_factor = tablonun doluluk sayýsý
-	file = okunacak dosyayý saklayan pointer
+	file_name = okunacak dosyanï¿½n adï¿½
+	hash_table = oluï¿½tutulacak hash tablosu
+	load_factor = tablonun doluluk sayï¿½sï¿½
+	file = okunacak dosyayï¿½ saklayan pointer
 	string = okunan kelime
-	return = dosya okuma iþleminin baþarýlý veya baþarýsýz olduðunu gösteren boolean deðer
+	return = dosya okuma iï¿½leminin baï¿½arï¿½lï¿½ veya baï¿½arï¿½sï¿½z olduï¿½unu gï¿½steren boolean deï¿½er
 */
 bool read_document(char* file_name, word* hash_table,int *load_factor){
 	FILE* file;
@@ -653,13 +653,13 @@ bool read_document(char* file_name, word* hash_table,int *load_factor){
 /* 
 Memory deallocate eden fonksiyon
 
-açýklama: Hash tablodaki tüm deðiþkenler statik boyutta deðil dinamik olarak oluþturulduðundan
-	program çýkýþýnda ilgili memory deallocate edilmesi gerektiðinden sýrasý ile tüm allocasyonlar
+aï¿½ï¿½klama: Hash tablodaki tï¿½m deï¿½iï¿½kenler statik boyutta deï¿½il dinamik olarak oluï¿½turulduï¿½undan
+	program ï¿½ï¿½kï¿½ï¿½ï¿½nda ilgili memory deallocate edilmesi gerektiï¿½inden sï¿½rasï¿½ ile tï¿½m allocasyonlar
 	silindi
 		
 parametreler:
 	hash_table = hash tablosu
-	tmp1,tmp2,tmp3 = geçici deðiþkenler
+	tmp1,tmp2,tmp3 = geï¿½ici deï¿½iï¿½kenler
 */
 void deallocate(word* hash_table){
 	int i;
