@@ -148,7 +148,7 @@ int main(){
 int find_distance(char* text1,char* text2){
 	int i,j;										// iteratorler
 	size_t M = strlen(text1)+1;						// matrixin sutun satir sayisi
-	size_t N = strlen(text2)+1;						// matrixin satýr sayisi
+	size_t N = strlen(text2)+1;						// matrixin satï¿½r sayisi
 	bool answer = false;							// sonucun 1 olup olmadigini kontrol eden degisken
 	int** matrix = (int**)malloc(sizeof(int*)*M);   // dinamic programlama matrisi
 	for(i=0;i<M;i++){
@@ -232,7 +232,7 @@ bool get_next(int** matrix,char* text1,char* text2,int *it1,int *it2,int value){
 		- value: Diagonali dolduracak deger
 	
 	return 
-		- Mesafe 1 için true diger durumlarda false dondurur. 
+		- Mesafe 1 iï¿½in true diger durumlarda false dondurur. 
 */ 
 bool call_answer(int** matrix,char* text1,char* text2,int it1,int it2,int value){
 	int i,j;											// iterator
@@ -274,7 +274,7 @@ bool call_answer(int** matrix,char* text1,char* text2,int it1,int it2,int value)
 		- word: aranacak kelime
 		- dictionary_table : kelimelerin aranacagi dictionary hash tablosu
 	return 
-		- Varsa 1 mesafeli kelimeleri yoksa 2 mesafeli kelimeleri o da yoksa NULL döndürür.
+		- Varsa 1 mesafeli kelimeleri yoksa 2 mesafeli kelimeleri o da yoksa NULL dï¿½ndï¿½rï¿½r.
 */ 
 char* find_alternate_list(char* word,char** dictionary_table){	
 	int i;															// iterator 

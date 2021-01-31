@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Hesaplanan matrisi yazdiran fonksiyon.
-	parametreler
-		- A : Dinamik Programlamada kullanilan matris
-		- M,N : Matrisin boyutlari
+/* prints calculated dynamic programing matrix.
+	parameters
+		- A : matrix for dynamic programming
+		- M,N : matrix size
 	return 
-		- Iki kelime arasindaki Levenshtein Edit Distance mesafesi
+		- levenshtein edit distance between two words
 */
 void print(float** A,int M,int N){
 	int i,j;						// iterator
@@ -18,14 +18,14 @@ void print(float** A,int M,int N){
 	}
 }
 
-/* Hesaplanan matrisi icin memory allokasyonu yapan fonksiyon.
-	parametreler
-		- M,N : Olusturlacak matrisin boyutlari
+/* allocates memory for given 2D matrix in required size.
+	parameters
+		- M,N : size of the matrix
 	return 
-		- Dinamik Programlamada kullanilacak matris
+		- matrix for dynamic programming
 */
 float ** generate_void(int M,int N){
-	float** A = (float**)malloc(sizeof(float*)*M);			// Hesaplanan orani tutacak bos matris
+	float** A = (float**)malloc(sizeof(float*)*M);			// empty matrix will keep dynamic programming values
 	int i;													// iterator
 	for(i=0;i<M;i++){
 		A[i]=(float*)malloc(sizeof(float)*N);
@@ -33,19 +33,19 @@ float ** generate_void(int M,int N){
 	return A;												
 }
 
-/* Main Fonksiyon
-	- Satir kismi kazanma sutun kismi ise kaybetme ihtimalini temsil ediyor.
-	- 0. indislerde kazanma satiri icin 1 kaybetme sutunu icin ise 0 olacak sekilde ayarlandi.
-	- Geriye kalan indislerdeki elemanlar kazanma ihtimali*ustundeki hücre + kaybetme ihtimal* solundaki hucre formulu ile hesaplandi
-	- Tüm matris dolduruldugunda son hucre hesaplanan oran degerimizi vermis oldu. 
+/* main function
+	- the row portion represents the winning and the column portion represents the probability of losing.
+	- first column set to 0 for losing and first row set to 1 for winning in the matrix.
+	- the remaining index elements are calculated with the formula = (winning ratio * top cell) + (losing ratio * top cell).
+	- when the whole matrix is â€‹â€‹filled, the ratio of the final cell has given our calculated value.
 	return 
-		- Program tamamlandi
+		- program complated
 */
 int main() {
-	int i,j;			// Tterator
-	int n;				// Gerekli kazanma sayisi
-	float ratio;		// Hesaplanan orani tutan matris
-	float** A;			// Oranlar matrisi
+	int i,j;			// iterator
+	int n;				// required win count
+	float ratio;		// calculated probability
+	float** A;			// ratio matrix
 	printf("\tWin Ratio Calculator\n");
 	printf("Please enter required win count: ");
 	scanf("%d",&n);
