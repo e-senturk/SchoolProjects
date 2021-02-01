@@ -3,7 +3,7 @@
 Question 1-a: Find two closest element in array with bruteforce.
 Question 1-b: Find two closest element in array with more effective way
 - Perform an algorithm analysis for both cases.
-- Analiyze worst, best and average case complexities for both questions.
+- Analyze worst, best and average case complexities for both questions.
 - Add your report to applications screenshots.
 
 Question 2: Print a Von-Neumann Matrix in desired size
