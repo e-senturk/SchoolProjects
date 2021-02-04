@@ -3,13 +3,13 @@
 #include <string.h>
 #include <stdbool.h>
 
-//Maximum String Boyutu 5000, Maximum Eleman Boyutu 100, Maximum Dosya Adý Uzunluðu 30, Maximum Integer rakam sayýsý 10 olarak atandý.
+//Maximum String Boyutu 5000, Maximum Eleman Boyutu 100, Maximum Dosya Adï¿½ Uzunluï¿½u 30, Maximum Integer rakam sayï¿½sï¿½ 10 olarak atandï¿½.
 #define MAX_STRING 5000
 #define MAX_SIZE 100
 #define FILE_NAME_SIZE 30
 #define MAX_INT 10
 
-//struct yapýsýnda; adres, o adrese sahip elemen sayýsýný tutan counter, ileri ve geri nodlarýný tutacak struct pointerlarý tanýmlandý.
+//struct yapï¿½sï¿½nda; adres, o adrese sahip elemen sayï¿½sï¿½nï¿½ tutan counter, ileri ve geri nodlarï¿½nï¿½ tutacak struct pointerlarï¿½ tanï¿½mlandï¿½.
 struct cache{
 	char address [MAX_SIZE];
 	int counter;
@@ -17,10 +17,10 @@ struct cache{
 	struct cache* previous;
 };
 
-//typedef ile tip tanýmlamasý yapýldý. Bu sayede nesne oluþturmada karþýlaþýlan tanýmlama problemi ortadan kaldýrýldý.
+//typedef ile tip tanï¿½mlamasï¿½ yapï¿½ldï¿½. Bu sayede nesne oluï¿½turmada karï¿½ï¿½laï¿½ï¿½lan tanï¿½mlama problemi ortadan kaldï¿½rï¿½ldï¿½.
 typedef struct cache cache_buffer;
 
-//Headerlar tanýmlandý.
+// function headers
 cache_buffer* create();
 cache_buffer* create_value(char*, int);
 cache_buffer* push_back(cache_buffer*, cache_buffer*);
@@ -35,7 +35,7 @@ void clear_question(cache_buffer**, char *, char);
 cache_buffer* list_modifier(cache_buffer*, char*, int);
 void prime(cache_buffer**, char*, int, int);
 
-//Bu fonksiyon boþ bir linkli liste elemaný oluþturmak için kullanýldý.
+// used for generating an empty linked list
 cache_buffer* create(){
 	cache_buffer* element;
 	element = (cache_buffer*) malloc (sizeof (cache_buffer));
@@ -48,7 +48,7 @@ cache_buffer* create(){
 	return element;
 }
 
-//Bu fonksiyon verilen deðerlere göre yeni bir linkli liste elemaný oluþturmak için kullanýldý.
+//Bu fonksiyon verilen deï¿½erlere gï¿½re yeni bir linkli liste elemanï¿½ oluï¿½turmak iï¿½in kullanï¿½ldï¿½.
 cache_buffer* create_value(char* address, int counter){
 	cache_buffer* element;
 	element = (cache_buffer*) malloc (sizeof (cache_buffer));
@@ -63,7 +63,7 @@ cache_buffer* create_value(char* address, int counter){
 	return element;
 }
 
-//Bu fonksiyon verilen linkli listenin sonuna verilen yeni elemaný eklemek için kulanýldý.
+//Bu fonksiyon verilen linkli listenin sonuna verilen yeni elemanï¿½ eklemek iï¿½in kulanï¿½ldï¿½.
 cache_buffer* push_back(cache_buffer* list, cache_buffer* adding){
 	cache_buffer* temp;
 	for(temp = list; temp -> next != NULL; temp = temp -> next);
@@ -72,7 +72,7 @@ cache_buffer* push_back(cache_buffer* list, cache_buffer* adding){
 	return list;
 }
 
-//Bu fonksiyon verilen linkli listenin baþýna verilen yeni elemaný eklemek için kulanýldý.
+//Bu fonksiyon verilen linkli listenin baï¿½ï¿½na verilen yeni elemanï¿½ eklemek iï¿½in kulanï¿½ldï¿½.
 cache_buffer* push_front(cache_buffer* list, cache_buffer* adding){
 	list -> previous = adding;
 	adding -> next = list;
@@ -80,7 +80,7 @@ cache_buffer* push_front(cache_buffer* list, cache_buffer* adding){
 	return list;
 }
 
-//Bu fonksyion verilen listenin son elemanýný silip deðer olarak o elemaný döndürmek için kullanýldý.
+//Bu fonksyion verilen listenin son elemanï¿½nï¿½ silip deï¿½er olarak o elemanï¿½ dï¿½ndï¿½rmek iï¿½in kullanï¿½ldï¿½.
 cache_buffer* pop_back(cache_buffer* list){
 	if(list == NULL){
 		printf("Pop failed");
@@ -92,7 +92,7 @@ cache_buffer* pop_back(cache_buffer* list){
 	return temp;
 }
 
-//Bu fonksiyon verilen linkli listeyi yazdýrmak için kullanýldý.
+//Bu fonksiyon verilen linkli listeyi yazdï¿½rmak iï¿½in kullanï¿½ldï¿½.
 void print_list(cache_buffer* list){
 	cache_buffer* temp;
 	
@@ -102,7 +102,7 @@ void print_list(cache_buffer* list){
 	printf("%s,%d\n", temp -> address, temp -> counter);	
 }
 
-//Bu fonksiyon verilen linkli listenin boyutunu ölçmek için kullanýldý.
+//Bu fonksiyon verilen linkli listenin boyutunu ï¿½lï¿½mek iï¿½in kullanï¿½ldï¿½.
 int size_calculator(cache_buffer* list){
 	int size = 0;
 	cache_buffer* temp;
@@ -112,7 +112,7 @@ int size_calculator(cache_buffer* list){
 	return size;
 }
 
-//Bu fonksiyon verilen dosyada ilk satýr içerisindeki 2 elemaný integer olarak almak için kullanýldý.
+//Bu fonksiyon verilen dosyada ilk satï¿½r iï¿½erisindeki 2 elemanï¿½ integer olarak almak iï¿½in kullanï¿½ldï¿½.
 bool get_numbers(FILE* file, int* T, int* L){
 	char temp[MAX_SIZE], number1[MAX_INT], number2[MAX_INT];
 	fgets(temp, MAX_SIZE, file);
@@ -140,7 +140,7 @@ bool get_numbers(FILE* file, int* T, int* L){
 	*T = atoi(number2);	
 }
 
-//Bu fonksiyon açýlýþ yazýsýný yazdýrmak için kullanýldý.
+//Bu fonksiyon aï¿½ï¿½lï¿½ï¿½ yazï¿½sï¿½nï¿½ yazdï¿½rmak iï¿½in kullanï¿½ldï¿½.
 void startup_text(){
 	printf("\t\t--Veri Yapilari 1. Odevi--\n");
 	printf("1-) Klavye ile giris yapin.\n");
@@ -149,7 +149,7 @@ void startup_text(){
 	printf("Veri giris metodunu seciniz: ");
 }
 
-//Bu fonksiyon verilen linkli listeyi pointerý üzerinden alýp kendisini ve ona baðlý elemanlarý silmek için kullanýldý.
+//Bu fonksiyon verilen linkli listeyi pointerï¿½ ï¿½zerinden alï¿½p kendisini ve ona baï¿½lï¿½ elemanlarï¿½ silmek iï¿½in kullanï¿½ldï¿½.
 void clear_list(cache_buffer** list){  
 	cache_buffer* current = *list;  
 	cache_buffer* next;  
@@ -161,7 +161,7 @@ void clear_list(cache_buffer** list){
 	*list = NULL;  
 }
 
-//Kullanýcýdan diziyi temizlemek isteyip istemediði inputunu alýp ona göre diziyiyi ve ekrandaki yazýlarý temizlemek için kullanýldý.
+//Kullanï¿½cï¿½dan diziyi temizlemek isteyip istemediï¿½i inputunu alï¿½p ona gï¿½re diziyiyi ve ekrandaki yazï¿½larï¿½ temizlemek iï¿½in kullanï¿½ldï¿½.
 void clear_question(cache_buffer** list, char *metot, char value){
     printf("Cache Listesini Silip Yeniden Baslamak Istermisiniz?(Y/N)\n");
 	*metot = getch();
@@ -175,22 +175,22 @@ void clear_question(cache_buffer** list, char *metot, char value){
 	system("cls || clear");
 } 
 
-/*Bu fonkisyon tanýmlanan iþlemlerin büyük kýsmýný yapmak için kullanýlan temel fonksiyondur.
+/*Bu fonkisyon tanï¿½mlanan iï¿½lemlerin bï¿½yï¿½k kï¿½smï¿½nï¿½ yapmak iï¿½in kullanï¿½lan temel fonksiyondur.
   list verilen listeyi;
-  text input olarak alýnan yeni elemaný
-  limit ise bize verilen T deðerini ifade etmekte.
-  Algoritma aþamalarýnda;
-  	1-) Ýlk while döngüsü ile verilen eleman adresinin listede olup olmadýðý kontrol edildi.
-  	 	Eðer adres listede yoksa temp deðeri listenin en sonundaki NULL pointerda,
-  	 	Eðer adres listede varsa temp deðeri listenin o elemanýn olduðu konumunda kalmasý þartý tanýmlandý.
+  text input olarak alï¿½nan yeni elemanï¿½
+  limit ise bize verilen T deï¿½erini ifade etmekte.
+  Algoritma aï¿½amalarï¿½nda;
+  	1-) ï¿½lk while dï¿½ngï¿½sï¿½ ile verilen eleman adresinin listede olup olmadï¿½ï¿½ï¿½ kontrol edildi.
+  	 	Eï¿½er adres listede yoksa temp deï¿½eri listenin en sonundaki NULL pointerda,
+  	 	Eï¿½er adres listede varsa temp deï¿½eri listenin o elemanï¿½n olduï¿½u konumunda kalmasï¿½ ï¿½artï¿½ tanï¿½mlandï¿½.
   	
-	2-) Eðer adres listede yoksa listenin sonuna o adres deðeri için yeni eleman eklendi.
+	2-) Eï¿½er adres listede yoksa listenin sonuna o adres deï¿½eri iï¿½in yeni eleman eklendi.
 	
-	3-) Eðer adres listede varsa counter 1 arttýrýldý.
+	3-) Eï¿½er adres listede varsa counter 1 arttï¿½rï¿½ldï¿½.
 	
-	4-)	Eðer counter limit deðerinin üstünde ise ve listenin ilk elemaný deðilse, eleman bulunduðu konumdan
-		silinip listenin baþýna eklendi. Listenin son elemaný olma durumunda bir sonraki eleman olmadýðýndan
-		hata oluþumunu engellemek için o eleman üzerinden iþlem yapýlmadý.
+	4-)	Eï¿½er counter limit deï¿½erinin ï¿½stï¿½nde ise ve listenin ilk elemanï¿½ deï¿½ilse, eleman bulunduï¿½u konumdan
+		silinip listenin baï¿½ï¿½na eklendi. Listenin son elemanï¿½ olma durumunda bir sonraki eleman olmadï¿½ï¿½ï¿½ndan
+		hata oluï¿½umunu engellemek iï¿½in o eleman ï¿½zerinden iï¿½lem yapï¿½lmadï¿½.
 */
 cache_buffer* list_modifier(cache_buffer* list, char* text, int limit){
 	cache_buffer* temp = list;
@@ -216,10 +216,10 @@ cache_buffer* list_modifier(cache_buffer* list, char* text, int limit){
 }
 
 /*Bu fonkisyon list_modifer fonksiyonunu kullanarak
-	1-) Liste boþ ise linkli listenin doðrudan head nodunu oluþtumak için,
-	2-) Liste Bboþ deðilse alýnan listenin adresini ve her bir adresi uygun biçimde list modifiere yönlendirmek için,
-	3-) Liste boyutunu kontrol edip L deðerinden büyükse son elemaný silmek için,
-	4-) listenin elemanlarýný yazdýrmak için kullanýldý.
+	1-) Liste boï¿½ ise linkli listenin doï¿½rudan head nodunu oluï¿½tumak iï¿½in,
+	2-) Liste Bboï¿½ deï¿½ilse alï¿½nan listenin adresini ve her bir adresi uygun biï¿½imde list modifiere yï¿½nlendirmek iï¿½in,
+	3-) Liste boyutunu kontrol edip L deï¿½erinden bï¿½yï¿½kse son elemanï¿½ silmek iï¿½in,
+	4-) listenin elemanlarï¿½nï¿½ yazdï¿½rmak iï¿½in kullanï¿½ldï¿½.
 */
 void prime(cache_buffer** list, char* adr, int size, int limit){
 	if(*list == NULL){
@@ -235,31 +235,31 @@ void prime(cache_buffer** list, char* adr, int size, int limit){
 }
 
 /* 
-   # Ana fonksiyon üzerinde input alma iþlemi yapýldý.
-   # metot deðiþkeni alýnacak inputun türünü seçmek için oluþturuldu.
-   # text_temp input alýnan adreslerin herbirini geçici olarak saklamak için oluþturudu.
-   # size L deðerini saklamak için oluþturudu.
-   # limit T deðerini saklamak için oluþturudu.
-   # list head nodunu saklamak için oluþturuldu.
+   # Ana fonksiyon ï¿½zerinde input alma iï¿½lemi yapï¿½ldï¿½.
+   # metot deï¿½iï¿½keni alï¿½nacak inputun tï¿½rï¿½nï¿½ seï¿½mek iï¿½in oluï¿½turuldu.
+   # text_temp input alï¿½nan adreslerin herbirini geï¿½ici olarak saklamak iï¿½in oluï¿½turudu.
+   # size L deï¿½erini saklamak iï¿½in oluï¿½turudu.
+   # limit T deï¿½erini saklamak iï¿½in oluï¿½turudu.
+   # list head nodunu saklamak iï¿½in oluï¿½turuldu.
    
-   Main fonksiyonu Aþamalarý;
-   1-) Input yöntemi metot karakterinde saklandý. Hatalý inputlar önemsenmedi.
-   2-) Q veya q için program kapatýldý.
-   3-) 1 için klavyeden input alýndý.
-   		3a-) Klavyeden T, L deðerleri alýndý.
-   		3b-) Tüm adresler klavyeden gets fonksiyonu ile alýnýp text_long adlý bir stringe kaydedildi.
-   		3c-) str_tok fonksyonu ile her bir adres text_short adlý stinge aktarýldý.
-   		3d-) Alýnan adreslere göre ve oluþturulan listeyi düzenlenmek üzere deðiþkenler prime fonksiyonuna gönderildi.
-   		3e-) Kullanýcýdan input alýnarak listenin silinip tüm iþlemin yeniden yapýlmasý için clear_question fonksiyonu kullanýldý.
-   			 Bu iþlem için yine metot deðiþkeni kullanýldý ve metot için oluþturulan while döngüsü ile baþa dönüldü.
-   	4-) 2 için dosyadan input alýndý.
-   		4a-) Dosya adý kullanýcýdan alýnarak sonuna txt uzantýsý eklendi.
-   		4b-) Dosya file pointer üzerinde açýldý eðer dosya yoksa hata mesajý yazdýrýldý.
-   		4c-) Dosyanýn ilk satýrýndaki T ve L deðerleri get_numbers fonksiyonu ile limit ve size deðiþkenlerine kaydedildi.
-   		4d-) Kalan dosya üzerindeki bilgiler fscanf fonksiyonu ile kelime kelime alýnýp text_temp deðiþkenine kaydedildi.
-   		4e-) Alýnan adreslere göre ve oluþturulan listeyi düzenlenmek ve listeyi yazdýrmak üzere deðiþkenler prime fonksiyonuna gönderildi.
-   		4f-) Kullanýcýdan input alýnarak listenin silinip tüm iþlemin yeniden yapýlmasý için clear_question fonksiyonu kullanýldý.
-		     Bu iþlem için yine metot deðiþkeni kullanýldý ve metot için oluþturulan while döngüsü ile baþa dönüldü. 		
+   Main fonksiyonu Aï¿½amalarï¿½;
+   1-) Input yï¿½ntemi metot karakterinde saklandï¿½. Hatalï¿½ inputlar ï¿½nemsenmedi.
+   2-) Q veya q iï¿½in program kapatï¿½ldï¿½.
+   3-) 1 iï¿½in klavyeden input alï¿½ndï¿½.
+   		3a-) Klavyeden T, L deï¿½erleri alï¿½ndï¿½.
+   		3b-) Tï¿½m adresler klavyeden gets fonksiyonu ile alï¿½nï¿½p text_long adlï¿½ bir stringe kaydedildi.
+   		3c-) str_tok fonksyonu ile her bir adres text_short adlï¿½ stinge aktarï¿½ldï¿½.
+   		3d-) Alï¿½nan adreslere gï¿½re ve oluï¿½turulan listeyi dï¿½zenlenmek ï¿½zere deï¿½iï¿½kenler prime fonksiyonuna gï¿½nderildi.
+   		3e-) Kullanï¿½cï¿½dan input alï¿½narak listenin silinip tï¿½m iï¿½lemin yeniden yapï¿½lmasï¿½ iï¿½in clear_question fonksiyonu kullanï¿½ldï¿½.
+   			 Bu iï¿½lem iï¿½in yine metot deï¿½iï¿½keni kullanï¿½ldï¿½ ve metot iï¿½in oluï¿½turulan while dï¿½ngï¿½sï¿½ ile baï¿½a dï¿½nï¿½ldï¿½.
+   	4-) 2 iï¿½in dosyadan input alï¿½ndï¿½.
+   		4a-) Dosya adï¿½ kullanï¿½cï¿½dan alï¿½narak sonuna txt uzantï¿½sï¿½ eklendi.
+   		4b-) Dosya file pointer ï¿½zerinde aï¿½ï¿½ldï¿½ eï¿½er dosya yoksa hata mesajï¿½ yazdï¿½rï¿½ldï¿½.
+   		4c-) Dosyanï¿½n ilk satï¿½rï¿½ndaki T ve L deï¿½erleri get_numbers fonksiyonu ile limit ve size deï¿½iï¿½kenlerine kaydedildi.
+   		4d-) Kalan dosya ï¿½zerindeki bilgiler fscanf fonksiyonu ile kelime kelime alï¿½nï¿½p text_temp deï¿½iï¿½kenine kaydedildi.
+   		4e-) Alï¿½nan adreslere gï¿½re ve oluï¿½turulan listeyi dï¿½zenlenmek ve listeyi yazdï¿½rmak ï¿½zere deï¿½iï¿½kenler prime fonksiyonuna gï¿½nderildi.
+   		4f-) Kullanï¿½cï¿½dan input alï¿½narak listenin silinip tï¿½m iï¿½lemin yeniden yapï¿½lmasï¿½ iï¿½in clear_question fonksiyonu kullanï¿½ldï¿½.
+		     Bu iï¿½lem iï¿½in yine metot deï¿½iï¿½keni kullanï¿½ldï¿½ ve metot iï¿½in oluï¿½turulan while dï¿½ngï¿½sï¿½ ile baï¿½a dï¿½nï¿½ldï¿½. 		
 */
 int main() {
 	char metot = '0';
