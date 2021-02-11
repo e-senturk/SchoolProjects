@@ -61,7 +61,7 @@ int main() {
     ActorInfo *actor_list;            // stores actor's list
     ActorInfo *iterator;              // iterates actor list
     char* formatter1, *formatter2; // used for text formatting
-    printf("Welcome to the Kevin-Bacon calculator\n");
+    printf("\tWelcome to the Kevin-Bacon Number Calculator\n");
     printf("App Description:\n");
     printf("This application reads a film list and gets a actor name from the user then calculates Kevin Bacon count for that actor:\n");
     printf("\t- User can reuse calculated data structures for any number of actors.\n");

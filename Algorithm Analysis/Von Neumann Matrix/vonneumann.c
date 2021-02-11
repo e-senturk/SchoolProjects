@@ -17,6 +17,7 @@ int main() {
     int **A;    // for matrix
     int *row;   // to store the number of black squares in each row
     // the value of n was taken from the user.
+    printf("\tWelcome to the Von Neumann Matrix Generator\n");
     printf("App Description:\n");
     printf("\t- This application generates a Von Neumann matrix for given n value.\n");
     printf("Please enter a n value: ");

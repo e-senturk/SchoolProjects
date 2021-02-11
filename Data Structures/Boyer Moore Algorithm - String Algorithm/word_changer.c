@@ -31,6 +31,7 @@ int main() {
     int instances_size;             // keep tracking size of the instances
     clock_t begin, end;             // keeps clock time in beginning and ending of operation
     double timeSpent;               // operation time
+    printf("\tWelcome to the Word Changer Application\n");
     printf("App Description:\n");
     printf("\t- This application reads a text file finds a desired word and replaces it with some other word.\n");
     printf("\t- User can also select case sensitivity.\n");

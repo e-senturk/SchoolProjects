@@ -84,7 +84,10 @@ int main() {
     char file_name[100]; // file's name
     char string[100];    // holding the word to search
     hash_table = read_database(&load_factor);
-    printf("\tWord Search Program with Hash Algorithm\n");
+    printf("\tWelcome to the Word Search Program\n");
+    printf("App Description:\n");
+    printf("\t- Application fills a hash table with input words and prints its information.\n");
+    printf("\t- Input can be get from a file or keyboard.\n");
     print_info();
     while (select != 'Q' && select != 'q') {
         scanf("%c", &select);
@@ -138,7 +141,7 @@ return:
 */
 char lowercase(char c) {
     if (c >= 'A' && c <= 'Z')
-        return c + 'a' - 'A';
+        return (char)(c + 'a' - 'A');
     else
         return c;
 }
@@ -338,8 +341,8 @@ int double_hashing(char *string, int i) {
     size_t horn;                                // integer number calculated by horner method
     int h1, h2;                                    // h1 and h2 function result
     horn = horner(string);
-    h1 = horn % TABLE_SIZE;
-    h2 = 1 + horn % (TABLE_SIZE - 1);
+    h1 = (int)(horn % TABLE_SIZE);
+    h2 = (int)(1 + horn % (TABLE_SIZE - 1));
     return (h1 + i * h2) % TABLE_SIZE;
 }
 
@@ -525,6 +528,7 @@ word *read_database(int *load_factor) {
     FILE *database; // pointer that stores the database file to be read
     char load_str[12]; // string value of the load factor
     char temp[100], word[100]; // buffers that temporarily store input values
+    char* end;              // used for strtol
     database = fopen("database.txt", "r");
     if (!database) {
         printf("Old database is not exists creating new one..\n\n");
@@ -532,7 +536,7 @@ word *read_database(int *load_factor) {
     }
     fgets(temp, 100, database);
     fgets(load_str, 12, database);
-    *load_factor = atoi(load_str);
+    *load_factor = (int)strtol(load_str, &end,10);
     fgets(temp, 100, database);
     fscanf(database, " %100s", temp);
     for (i = 0; i < TABLE_SIZE; i++) {

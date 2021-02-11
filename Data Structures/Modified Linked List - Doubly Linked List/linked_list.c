@@ -216,6 +216,7 @@ void get_numbers(FILE *file, int *limit, int *size) {
 
 // prints program info
 void startup_text() {
+    printf("\tWelcome to the Doubly Linked List Changer Application\n");
     printf("App Description:\n");
     printf("This application generates a linked list which contains addresses and occurrence count with given rules:\n");
     printf("\t- User can enter the input from a file or keyboard.\n");

@@ -34,6 +34,7 @@ void print_level(Tree *root, int level);
 void print_huffman(Tree *root);
 
 int main() {
+    printf("\tWelcome to the Huffman Tree Generator\n");
     printf("App Description: \n");
     printf("\t- This app is getting an input text and generating a huffman tree from it\n");
     printf("\t- The tree nodes will be printed with empty nodes after generated.\n");

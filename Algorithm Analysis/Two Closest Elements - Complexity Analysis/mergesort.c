@@ -15,6 +15,7 @@ int main() {
     int min;  // to hide the smallest difference between min elements
     int index; // to hide the position of the first difference between the searched smallest elements
     // the size of the array is taken from the user.
+    printf("\tWelcome to the Two Closest Elements Application\n");
     printf("App Description:\n");
     printf("\t- This application gets an unordered array from the user and finds most closest element with merge_sort method.\n");
     printf("Please enter the array size: ");
