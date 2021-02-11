@@ -1,5 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
+int input_equations(double ***coefficients, double **results);
+void print_selector();
+double** generate_matrix(int degree);
+void free_matrix(double** matrix, int degree);
+int get_integer();
+double get_double();
+void print_result(double* variables, int degree);
+double approximate_zero(double value) ;
+double* copy_1D(const double* original, int degree);
+double** copy_2D(double** matrix, int degree);
+void print(double **coefficients, double *results, int degree);
+int move_zero(double** matrix, int index, int degree);
+int pow_minus1(int k);
+double determinant(double **matrix, int degree) ;
+double* cramer(double** coefficients, const double* answers, int degree);
+double* gauss(double** coefficients, double* results, int degree);
+double* gauss_jordan(double** coefficients, double* results, int degree);
+double mutlak(double A);
+double* jakobi(double** A, double* S, int degree, double x0, double E);
+double* gauss_seidel(double** A, double* S, int degree, double x0, double E);
+
+int main() {
+    int degree;
+    char select = '0';
+    char again;
+    double **coefficients;  // storing equations coefficients
+    double *results;        // storing equation results
+    double *variables;      // storing variable values
+    degree = input_equations(&coefficients, &results);
+    while (select == '0') {
+        print(coefficients, results, degree);
+        print_selector();
+        scanf(" %c", &select);
+        if (select == '1') {
+            printf("Determinant: %lg\n", determinant(coefficients, degree));
+        } else if (select == '2') {
+            variables = cramer(coefficients, results, degree);
+            print_result(variables, degree);
+        } else if (select == '3') {
+            variables = gauss(coefficients, results, degree);
+            if(variables != NULL)
+                print_result(variables, degree);
+        } else if (select == '4') {
+            variables = gauss_jordan(coefficients, results, degree);
+            if(variables != NULL)
+                print_result(variables, degree);
+        } else if (select == '5' || select == '6') {
+            double x0, E;
+            printf("Please enter start value:\n");
+            x0 = get_double();
+            printf("Please enter the epsilon value:\n");
+            E = get_double();
+            if(select == '5')
+                variables = jakobi(coefficients, results, degree, x0, E);
+            else
+                variables = gauss_seidel(coefficients, results, degree, x0, E);
+            if(variables != NULL)
+                print_result(variables, degree);
+        } else if (select == '0') {
+            system("@cls||clear");
+            degree = input_equations(&coefficients, &results);
+        }
+        printf("Do you want to do another calculation with given matrix.(y/n)\n");
+        scanf(" %c", &again);
+        if (again == 'y' || again == 'Y') {
+            system("@cls||clear");
+            select = '0';
+        }
+    }
+    return 0;
+}
 
 double** generate_matrix(int degree){
     int i;          // iterator
@@ -339,7 +410,6 @@ double* jakobi(double** A, double* S, int degree, double x0, double E) {
     }
 }
 
-
 // calculates the equation with Gauss Seidel method.
 double* gauss_seidel(double** A, double* S, int degree, double x0, double E) {
     double** B;
@@ -417,55 +487,4 @@ int input_equations(double ***coefficients, double **results) {
     *coefficients = values;
     *results = res;
     return degree;
-}
-
-int main() {
-    int degree;
-    char select = '0';
-    char again;
-    double **coefficients;  // storing equations coefficients
-    double *results;        // storing equation results
-    double *variables;      // storing variable values
-    degree = input_equations(&coefficients, &results);
-    while (select == '0') {
-        print(coefficients, results, degree);
-        print_selector();
-        scanf(" %c", &select);
-        if (select == '1') {
-            printf("Determinant: %lg\n", determinant(coefficients, degree));
-        } else if (select == '2') {
-            variables = cramer(coefficients, results, degree);
-            print_result(variables, degree);
-        } else if (select == '3') {
-            variables = gauss(coefficients, results, degree);
-            if(variables != NULL)
-                print_result(variables, degree);
-        } else if (select == '4') {
-            variables = gauss_jordan(coefficients, results, degree);
-            if(variables != NULL)
-                print_result(variables, degree);
-        } else if (select == '5' || select == '6') {
-            double x0, E;
-            printf("Please enter start value:\n");
-            x0 = get_double();
-            printf("Please enter the epsilon value:\n");
-            E = get_double();
-            if(select == '5')
-                variables = jakobi(coefficients, results, degree, x0, E);
-            else
-                variables = gauss_seidel(coefficients, results, degree, x0, E);
-            if(variables != NULL)
-                print_result(variables, degree);
-        } else if (select == '0') {
-            system("@cls||clear");
-            degree = input_equations(&coefficients, &results);
-        }
-        printf("Do you want to do another calculation with given matrix.(y/n)\n");
-        scanf(" %c", &again);
-        if (again == 'y' || again == 'Y') {
-            system("@cls||clear");
-            select = '0';
-        }
-    }
-    return 0;
 }
