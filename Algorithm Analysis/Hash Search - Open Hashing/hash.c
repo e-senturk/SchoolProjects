@@ -436,12 +436,12 @@ void find_word(char *string, word *hash_table) {
     int index = search_hash_table(string, hash_table, &step); // calculated hash index
     if (compare_string(hash_table[index].string, string)) {
         list *tmp = hash_table[index].documents;
-        printf("- %s founded with %d steps, ", string, step);
+        printf("- %s founded with %d steps in ", string, step);
         while (tmp->next != NULL) {
             printf("%s, ", tmp->value);
             tmp = tmp->next;
         }
-        printf("in %s files.\n", tmp->value);
+        printf("%s files.\n", tmp->value);
     } else
         printf("- %s couldn't found. Process operated for %d steps.\n", string, step);
 }

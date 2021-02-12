@@ -6,6 +6,7 @@
     - 8086 Assembly
     - Introduction to Computer Engineering
     - Microprocessor
+    - Numerical Analysis
     - Prolog
     - Data Communication
 

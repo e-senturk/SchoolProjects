@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_TEXT 10000
 #define EMPTY ' '
@@ -47,6 +48,7 @@ int main() {
         perror("Input cannot be empty");
         return 0;
     } else {
+    	text[strlen(text)-1] = '\0';
         head = create_tree(text[0]);
     }
     int i = 1;

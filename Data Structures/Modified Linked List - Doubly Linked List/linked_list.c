@@ -66,6 +66,7 @@ int main() {
         printf("Enter all array elements separated with spaces then press Enter: \n");
         getchar();
         fgets(text_long, MAX_STRING, stdin);
+		text_long[strlen(text_long)-1] = '\0';
         text_short = strtok(text_long, " ");           //reads each number one by one from user input
         while (text_short != NULL) {
             fill_list(&list, text_short, size, limit);
@@ -253,7 +254,7 @@ void clear_list(cache_buffer **head) {
         value = keeps selection for keyboard or file input.
 */
 void clear_question(cache_buffer **head, char *method, char value) {
-    printf("Do you want to clear linked head and start over?(Y/N): ");
+    printf("Do you want to clear linked list and start over?(Y/N): ");
     scanf(" %c",method);
     if (*method == 'Y' || *method == 'y') {
         *method = value;
